@@ -1,3 +1,6 @@
+let playerScore = 0
+let computerScore = 0
+
 window.onload = (event) => {
     let userName = prompt('What is your name?')
 
