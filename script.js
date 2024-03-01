@@ -14,18 +14,18 @@ function playGame(playerChoice){
     let result = "";
 
     if(playerChoice === computerChoice){
-        result = "IT'S A TIE!";
+        result = "TIE!";
     }
     else{
         switch(playerChoice){
             case "rock":
-                result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "scissors") ? " WIN!" : " LOSE!";
                 break;
             case "paper":
-                result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "rock") ? " WIN!" : " LOSE!";
                 break;
             case "scissors":
-                result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "paper") ? " WIN!" : " LOSE!";
                 break;
         }
     }
@@ -35,7 +35,6 @@ function playGame(playerChoice){
     resultDisplay.textContent = result;
     
 
-    resultDisplay.classList.remove("greenText", "redText");
 
     switch(result){
         case "WIN!":
