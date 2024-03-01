@@ -11,11 +11,13 @@ window.onload = (event) => {
 
     if(!userName.trim()) {
         alert('please enter a name brother')
-        userName = prompt('Eneter your name')
+        userName = prompt('Enter your name')
     }
 document.getElementById('response-text').innerText = `${userName}`
 
 }
+const victory = ["you won"];
+const loss = ['you lost'];
+const tie = ["you tied"];
 
-let message = `Yo good job ${userName}, you won!`
 
