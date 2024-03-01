@@ -1,5 +1,4 @@
-let playerScore = 0
-let computerScore = 0
+
 
 window.onload = (event) => {
     let userName = prompt('What is your name?')
@@ -59,12 +58,25 @@ if (playerChoice === computerChoice) {
   roundsPlayed++;
 
 
-
-
-
-
-
-
-
-
+ // Update scores and rounds played
+ playerScoreElement.textContent = playerScore;
+ computerScoreElement.textContent = computerScore;
+ roundsplayedElement.textContent = roundsPlayed;
+ 
+ // Reload the page if round 5 is reached
+ if (roundsPlayed === 5) {
+   location.reload();
+ }
 }
+ 
+// Reload the page
+document.querySelector(".reset-btn").addEventListener("click", function() {
+    location.reload();
+  });
+
+
+
+
+
+
+
