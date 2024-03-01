@@ -37,8 +37,8 @@ function playRound(playerChoice) {
 
 
     // Update images || This uses .querySelector
-  document.querySelector(".result-container .user-result-element i").classList = `fa-regular fa-hand-${playerChoice}`;
-  document.querySelector(".result-container .computer-result-element i").classList = `fa-regular fa-hand-${computerChoice}`;
+  document.querySelector(".result-container .user-result-element i").classList = `rock.png`;
+  document.querySelector(".result-container .computer-result-element i").classList = `rock.png-${computerChoice}`;
 
 
 // Determine winner
