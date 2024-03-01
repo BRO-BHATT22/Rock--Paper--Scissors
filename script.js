@@ -1,82 +1,54 @@
-
-
-window.onload = (event) => {
-    let userName = prompt('What is your name?')
-
-    if(userName === null) {
-        document.getElementById('response-text').innerText = "Yo enter a name yo are not sneaky"
-        document.getElementById('response-text').classList = "Display text-bold h3"
-    }
-
-    if(!userName.trim()) {
-        alert('please enter a name brother')
-        userName = prompt('Enter your name')
-    }
-document.getElementById('response-text').innerText = `${userName}`
-
-}
-const victory = ["you won"];
-const loss = ['you lost'];
-const tie = ["you tied"];
-
-// Variables that should work hopefully please
-const playerScoreElement = document.querySelector('.winnings-history-element');
-const computerScoreElement = document.querySelector('.losses-history-element');
-const outcomeElement = document.querySelector('.game-status-element');
-const roundsplayedElement = document.querySelector('.ties-history-element');
-
+const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.getElementById("user-choice-img");
+const computerDisplay = document.getElementById("computer-choice-img");
+const resultDisplay = document.querySelector(".game-status-element");
+const playerScoreDisplay = document.querySelector(".winnings-history-element");
+const computerScoreDisplay = document.querySelector(".losses-history-element");
+const resetBtn = document.querySelector(".reset-btn");
 let playerScore = 0;
 let computerScore = 0;
-let roundsPlayed = 0;
 
-// Function to play game
-function playRound(playerChoice) {
-    const options = ["rock", "paper", "scissors"];
-    const computerChoice = options[Math.floor(Math.random() * 3)];
+// Event listener for player moves
+document.querySelectorAll(".move").forEach(button => {
+    button.addEventListener("click", () => {
+        playGame(button.dataset.userMove);
+    });
+});
 
+// Event listener for reset button
+resetBtn.addEventListener("click", resetGame);
 
+// Function to play the game
+function playGame(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = "";
 
-    // Update images || This uses .querySelector
-  document.querySelector(".result-container .user-result-element i").classList = `rock.png`;
-  document.querySelector(".result-container .computer-result-element i").classList = `rock.png-${computerChoice}`;
+    if (playerChoice === computerChoice) {
+        result = "It's a tie!";
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        result = "You win!";
+        playerScore++;
+    } else {
+        result = "You lose!";
+        computerScore++;
+    }
 
-
-// Determine winner
-if (playerChoice === computerChoice) {
-    outcomeElement.textContent = "It's a tie!";
-  } else if (
-    (playerChoice === 'rock' && computerChoice === 'scissors') ||
-    (playerChoice === 'paper' && computerChoice === 'rock') ||
-    (playerChoice === 'scissors' && computerChoice === 'paper')
-  ) {
-    outcomeElement.textContent = 'You win!';
-    playerScore++; 
-  } else {
-    outcomeElement.textContent = 'You lose!';
-    computerScore++;
-  }
-  roundsPlayed++;
-
-
- // Update scores and rounds played
- playerScoreElement.textContent = playerScore;
- computerScoreElement.textContent = computerScore;
- roundsplayedElement.textContent = roundsPlayed;
- 
- // Reload the page if round 5 is reached
- if (roundsPlayed === 5) {
-   location.reload();
- }
+    playerDisplay.src = `${playerChoice}.png`;
+    computerDisplay.src = `${computerChoice}.png`;
+    resultDisplay.textContent = result;
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
 }
- 
-// Reload the page
-document.querySelector(".reset-btn").addEventListener("click", function() {
-    location.reload();
-  });
 
-
-
-
-
-
-
+// Function to reset the game
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+    resultDisplay.textContent = "Let's Play!";
+}
