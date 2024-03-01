@@ -30,25 +30,26 @@ function playGame(playerChoice){
         }
     }
 
-    playerDisplay.textContent = `${Username}: ${playerChoice}`;
+    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
     computerDisplay.textContent = `Computer: ${computerChoice}`;
     resultDisplay.textContent = result;
-    
 
+    resultDisplay.classList.remove("greenText", "redText");
 
     switch(result){
-        case "WIN!":
+        case "YOU WIN!":
             resultDisplay.classList.add("greenText");
             playerScore++;
             playerScoreDisplay.textContent = playerScore;
             break;
-        case "LOSE!":
+        case "YOU LOSE!":
             resultDisplay.classList.add("redText");
             computerScore++;
             computerScoreDisplay.textContent = computerScore;
             break;
     }
 }
+
 
 let Username = prompt('Enter a Username:')
 let story = `${Username}`
