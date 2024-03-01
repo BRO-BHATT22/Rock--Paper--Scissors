@@ -1,54 +1,57 @@
-const choices = ["rock", "paper", "scissors"];
-const playerDisplay = document.getElementById("user-choice-img");
-const computerDisplay = document.getElementById("computer-choice-img");
-const resultDisplay = document.querySelector(".game-status-element");
-const playerScoreDisplay = document.querySelector(".winnings-history-element");
-const computerScoreDisplay = document.querySelector(".losses-history-element");
-const resetBtn = document.querySelector(".reset-btn");
 let playerScore = 0;
 let computerScore = 0;
 
-// Event listener for player moves
-document.querySelectorAll(".move").forEach(button => {
-    button.addEventListener("click", () => {
-        playGame(button.dataset.userMove);
-    });
-});
+const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay");
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
 
-// Event listener for reset button
-resetBtn.addEventListener("click", resetGame);
+function playGame(playerChoice){
 
-// Function to play the game
-function playGame(playerChoice) {
     const computerChoice = choices[Math.floor(Math.random() * 3)];
     let result = "";
 
-    if (playerChoice === computerChoice) {
-        result = "It's a tie!";
-    } else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-        result = "You win!";
-        playerScore++;
-    } else {
-        result = "You lose!";
-        computerScore++;
+    if(playerChoice === computerChoice){
+        result = "IT'S A TIE!";
+    }
+    else{
+        switch(playerChoice){
+            case "rock":
+                result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "paper":
+                result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "scissors":
+                result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+        }
     }
 
-    playerDisplay.src = `${playerChoice}.png`;
-    computerDisplay.src = `${computerChoice}.png`;
+    playerDisplay.textContent = `${Username}: ${playerChoice}`;
+    computerDisplay.textContent = `Computer: ${computerChoice}`;
     resultDisplay.textContent = result;
-    playerScoreDisplay.textContent = playerScore;
-    computerScoreDisplay.textContent = computerScore;
+    
+
+    resultDisplay.classList.remove("greenText", "redText");
+
+    switch(result){
+        case "WIN!":
+            resultDisplay.classList.add("greenText");
+            playerScore++;
+            playerScoreDisplay.textContent = playerScore;
+            break;
+        case "LOSE!":
+            resultDisplay.classList.add("redText");
+            computerScore++;
+            computerScoreDisplay.textContent = computerScore;
+            break;
+    }
 }
 
-// Function to reset the game
-function resetGame() {
-    playerScore = 0;
-    computerScore = 0;
-    playerScoreDisplay.textContent = playerScore;
-    computerScoreDisplay.textContent = computerScore;
-    resultDisplay.textContent = "Let's Play!";
-}
+let Username = prompt('Enter a Username:')
+let story = `${Username}`
+let madLibOutputDiv = document.getElementById('madLibOutput')
+madLibOutputDiv.innerHTML = `<p>${story}</p>`

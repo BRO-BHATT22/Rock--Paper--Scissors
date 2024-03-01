@@ -2,55 +2,87 @@
 <html lang="en">
 
 <head>
-  <title>Birthday</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <!-- Bootstrap CSS v5.2.1 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rock. Paper, Scissors!</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
-    <div class="container">
-      <div class="result-container">
-        <div class="user-result-element result-move">
-          <img id="user-choice-img" src="rock.png" alt="User Choice Image">
-        </div>
-        <div class="computer-result-element result-move">
-          <img id="computer-choice-img" src="paper.png" alt="Computer Choice Image">
-        </div>
-        <div class="computer-result-element result-move">
-          <img id="computer-choice-img" src="scissors.png" alt="Computer Choice Image">
-          </div>
+  <header>
+    <h1 class="my-4"><strong>Rock - Paper - Scissors</strong></h1>
+  </header>
+
+
+  <main class="m-2">
+    
+    <div id="TBone" class="container">
+
+
+      <div class="choices">
+        <button onclick="playGame('rock')">👊</button>
+        <button onclick="playGame('paper')">✋</button>
+        <button onclick="playGame('scissors')">✌</button>
       </div>
-  
-    
-      <p class="game-status-element">Let's Play!</p>
-    
-      <div class="move-select-menu">
-        <button data-user-move="rock" class="rock-move move">
-          <i class="fa-regular fa-hand-back-fist select-move-icon"></i>
-          <p class="move-select-name">Rock</p>
-        </button>
-        <button data-user-move="paper" class="paper-move move">
-          <i class="fa-regular fa-hand select-move-icon"></i>
-          <p class="move-select-name">Paper</p>
-        </button>
-        <button data-user-move="scissors" class="scissors-move move">
-          <i class="fa-regular fa-hand-scissors select-move-icon"></i>
-          <p class="move-select-name">Scissors</p>
-        </button>
+
+      <h1><strong>Results:</strong></h1>
+      <div id="resultDisplay"></div>
+   
+      <div id="playerDisplay">
+        <p id="madLibOutput">:</p>
       </div>
-    
-      <div class="results-history">
-        <p class="winning-history history"><strong>Winnings: </strong> <span class="winnings-history-element history-element">0</span></p>
-        <p class="tie-history history"><strong>Ties: </strong> <span class="ties-history-element history-element">0</span></p>
-        <p class="lose-history history"><strong>Losses: </strong> <span class="losses-history-element history-element">0</span></p>
+      <div id="computerDisplay">COMPUTER: </div>
+
+
+
+
+      <div class="scoreDisplay">Player Score:
+        <span id="playerScoreDisplay">0</span>
       </div>
-    
-      <button class="reset-btn">Reset</button>
+
+      <div class="scoreDisplay">Computer Score:
+        <span id="computerScoreDisplay">0</span>
+      </div>
+      <button id="resetBtn" class="resetBtn">Reset</button>
     </div>
-  </body>
-    </head>
-    </html>
+  </main>
+
+  
+
+  <script>
+    // Add event listener to the button
+    document.getElementById("resetBtn").addEventListener("click", function() {
+      // Reload the page
+      location.reload();
+    });
+  </script>
+
+
+
+  <!-- Footer -->
+  <br>
+  <footer class="bg-light text-center text-white">
+    <div class="container p-4 pb-0">
+      <section class="mb-5">
+        <a class="btn text-white btn-floating m-1" style="background-color: #333333;"
+          href="https://github.com/dashboard" role="button"><i class="fab fa-github"></i></a>
+      </section>
+    </div>
+    <div class="text-center p" style="background-color: rgba(0, 0, 0, 0.2);">
+        </div>
+    </footer>
+    <!-- Footer END-->
+    
+    <script src="
+        https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+          crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>
